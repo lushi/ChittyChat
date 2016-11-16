@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Chitty Chat</title>
+  </head>
+  <body>
+    <h1>Welcome to Chitty Chat</h1>
+    <ul id="messages"></ul>
+    <button id="getMessage">Get Message</button>
+    <form action="/chat" method="POST">
+      <input type="text" name="content"></input>
+      <input type="submit" value="Send"></input>
+      <input type="hidden" name="from" value="Me"></input>
+      <input type="hidden" name="to" value="YOU"></input>
+    </form>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $('#getMessage').click(function() {
+        $.get('/chat', function(data) {
+          console.log(data);
+        })
+      })
+    </script>
+  </body>
+</html>
