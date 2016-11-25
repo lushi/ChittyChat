@@ -9,9 +9,15 @@ const Db = (() => {
   }
 
   return {
+    get: (collection, id) => {
+      if (typeof collection === 'undefined' || collecton === null) {
+        throw new Error('collection is not defined');
+      }
+    },
+
     getAll: (collection) => {
-      if (typeof collection === 'undefined') {
-        throw new Error('name is not defined');
+      if (typeof collection === 'undefined' || collection === null) {
+        throw new Error('collection is not defined');
       }
 
       return _data[collection];

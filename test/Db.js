@@ -113,4 +113,24 @@ describe('Db', () => {
       expect(dbCollection.length).to.equal(2);
     })
   })
+
+  describe('#get', () => {
+    const collection = 'Message';
+    const data = {content: 'Hai', from: 'Mary', to: 'Joe'};
+
+    beforeEach(() => {
+      testDb.clear();
+      now = Date.now();
+      testDb.set(collection, data);
+    });
+
+    afterEach(() => {
+      testDb.clear();
+    })
+
+    it('should throw error if collection name is not provided', () => {
+      const fn = () => {testDb.get(null, 10)};
+      expect(fn).to.throw(Error);
+    })
+  })
 })
